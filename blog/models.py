@@ -14,3 +14,15 @@ class Post(models.Model):
 
 	def  get_absolute_url(self):
 		return reverse('post-detail', kwargs={'pk': self.pk})
+
+class Salary(models.Model):
+	designation = models.CharField(max_length=100)
+	no_of_overtime  = models.IntegerField()
+	no_of_days = models.IntegerField()
+	advances = models.IntegerField()
+	name = models.ForeignKey(User, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.title
+
+	

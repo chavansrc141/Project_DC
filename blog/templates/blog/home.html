@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-	{% for post in posts %}
+	<!-- {% for post in posts %}
 		<article class="media content-section">
 			<img class="rounded-circle article-img"
 			src="{{ post.author.profile.image.url }}">
@@ -34,5 +35,19 @@
 			<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
 			<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
 		{% endif %}
-	{% endif %}
+	{% endif %} -->
+	<h2>Welcome to Company Administration System!!</h2>
+
+	<div class="content-section">
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Payroll</legend>
+				{{ form|crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Get Salary</button>
+			</div>
+		</form>
+	</div>
 {% endblock content %}

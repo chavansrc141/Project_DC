@@ -8,7 +8,7 @@ from django.views.generic import (
 	UpdateView,
 	DeleteView
 )
-from .models import Post
+from .models import Post, Salary
 # list of dictionaries 
 
 
@@ -47,6 +47,30 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 	def form_valid(self, form):
 		form.instance.author = self.request.user
 		return super().form_valid(form)
+
+class PostSalaryView(LoginRequiredMixin, CreateView):
+	model = Salary
+	fields = ['name','designation','no_of_overtime','no_of_days','advances']
+
+	def calculate_sal(self, form):
+		if form.instance.designation=="Jr.Manager":
+			sal_of_day=3000
+	
+		if form.instance.designation=="Manager":
+			sal_of_day=5000
+        
+		if form.instance.designation=="Sr.Manager":
+			sal_of_day=7000
+
+		add = (sal_of_day*form.instance.no_of_days)+((sal_of_day/8)*form.instance.no_of_overtime)+1200-form.instance.advances
+		return super().calculate_sal(form)
+
+	def form_valid(self, form):
+		form.instance.name = self.request.user
+		return super().form_valid(form)
+
+	
+	
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Post
