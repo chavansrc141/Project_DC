@@ -6,12 +6,14 @@ from .views import (
     PostUpdateView,
     PostDeleteView,
     UserPostListView,
-    PostSalaryView
+    PostSalaryView,
+    calculate_sal
 )
 from . import views
 
 urlpatterns = [
     path('', PostSalaryView.as_view(), name = 'blog-home'),
+    path('calculate_sal', views.calculate_sal, name = 'calculate_sal'),
     path('user/<str:username>', UserPostListView.as_view(), name = 'user-posts'),
     path('post/<int:pk>/', PostDetailView.as_view(), name = 'post-detail'),
     path('post/new/', PostCreateView.as_view(), name = 'post-create'),

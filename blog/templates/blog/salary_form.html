@@ -4,8 +4,8 @@
 
 	<h2>Welcome to Company Administration System!!</h2>
 
-	<div class="content-section">
-		<form method="POST">
+	<!-- <div class="content-section">
+		<form action="calculate_sal">
 			{% csrf_token %}
 			<fieldset class="form-group">
 				<legend class="border-bottom mb-4">Payroll System</legend>
@@ -13,7 +13,64 @@
 			</fieldset>
 			<div class="form-group">
 				<button class="btn btn-outline-info" type="submit"><a href="{% url 'blog-about' %}">Salary</a></button>
+				<button class="btn btn-outline-info" type="submit">Salary</button>
 			</div>
 		</form>
+	</div> -->
+
+	<!-- <div class="content-section">
+		<form action="calculate_sal">
+			<h6>Enter Name : </h6>
+			<input type="text" name="name"><br>
+			<h6>Enter designation : </h6>
+			<input type="text" name="designation"><br>
+			<h6>Enter no_of_overtime : </h6>
+			<input type="text" name="no_of_overtime"><br>
+			<h6>Enter no_of_days : </h6>
+			<input type="text" name="no_of_days"><br>
+			<h6>Enter advances : </h6>
+			<input type="text" name="advances"><br><br>
+			<input class="btn btn-outline-info" type="submit">
+		</form>
+	</div> -->
+	
+
+	<div class="content-section">
+		<form action="calculate_sal">
+			<legend class="border-bottom mb-4">Payroll System</legend>
+				<div class="form-row">
+				  
+				  <div class="form-group col-md-6">
+					<label for="inputState">Enter the Designation</label>
+					<!-- <input type="text" class="form-control" id="inputState" placeholder="Designation" name="designation"> -->
+					<select id="inputState" class="form-control" name="designation">
+					  <option>Jr.Manager</option>
+					  <option>Manager</option>
+					  <option>Sr.Manager</option>
+					</select>
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label for="inputAddress">Enter the number of working days :</label>
+				  <input type="text" class="form-control" id="inputAddress" name="no_of_days">
+				</div>
+				<div class="form-group">
+				  <label for="inputAddress2">Enter the number of Overtime Hours :</label>
+				  <input type="text" class="form-control" id="inputAddress2" name="no_of_overtime">
+				</div>
+				<div class="form-row">
+				  <div class="form-group col-md-6">
+					<label for="inputCity">Enter advances :</label>
+					<input type="text" class="form-control" id="inputCity" name="advances">
+				  </div>
+				  
+				  
+				</div>
+				
+				<input class="btn btn-outline-info" type="submit">
+		</form>
 	</div>
+
+
+	
 {% endblock content %}
